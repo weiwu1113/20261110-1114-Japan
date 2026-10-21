@@ -1,0 +1,332 @@
+/* --- 秋季楓葉暖色調變數 --- */
+:root {
+  --primary-maple: #B23A22;     /* 楓紅 */
+  --secondary-amber: #D97724;   /* 琥珀橘 */
+  --warm-yellow: #E6A135;      /* 銀杏黃 */
+  --bg-cream: #FDFBF7;          /* 米白背景 */
+  --card-bg: #FFFFFF;
+  --text-dark: #3E2723;         /* 深焦糖棕文字 */
+  --text-muted: #795548;
+  --border-color: #E8D8C8;
+  --highlight: #FFF8E1;
+  --shadow: 0 4px 12px rgba(178, 58, 34, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Header & Date Navigation */
+.main-header {
+  background: linear-gradient(135deg, var(--primary-maple), var(--secondary-amber));
+  color: white;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.main-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 0.8rem;
+}
+
+.date-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.nav-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  background-color: white;
+  color: var(--primary-maple);
+  font-weight: bold;
+}
+
+.highlight-day {
+  border-color: var(--warm-yellow);
+}
+
+.draft-btn {
+  background-color: #8D6E63;
+}
+
+/* Container Layout */
+.container {
+  display: flex;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 0 15px;
+  gap: 20px;
+}
+
+.itinerary-section {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.map-section {
+  flex: 1;
+}
+
+.map-sticky-wrapper {
+  position: sticky;
+  top: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Day Cards */
+.day-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  scroll-margin-top: 140px;
+}
+
+.day-header {
+  border-bottom: 2px solid var(--warm-yellow);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.day-header h2 {
+  font-size: 1.15rem;
+  color: var(--primary-maple);
+}
+
+.birthday-card {
+  border: 2px solid var(--secondary-amber);
+  background-color: #FFFDF9;
+}
+
+.draft-section {
+  background-color: #F5EBE6;
+}
+
+/* Spot Items (Cards) */
+.spot-item {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--secondary-amber);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.spot-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.spot-item.active-highlight {
+  border-color: var(--primary-maple);
+  background-color: var(--highlight);
+}
+
+.spot-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spot-title {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.spot-tag {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: #EFEBE9;
+  color: var(--text-muted);
+}
+
+.spot-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.action-btn {
+  background: #F5F5F5;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background: var(--primary-maple);
+  color: white;
+  border-color: var(--primary-maple);
+}
+
+.spot-address {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.spot-address a {
+  color: var(--secondary-amber);
+  text-decoration: none;
+}
+
+.spot-address a:hover {
+  text-decoration: underline;
+}
+
+.spot-notes {
+  width: 100%;
+  border: 1px dashed var(--border-color);
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 0.85rem;
+  color: #555;
+  background: #FAFAFA;
+  resize: vertical;
+  min-height: 38px;
+}
+
+/* Add Spot Button */
+.add-spot-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px dashed var(--secondary-amber);
+  color: var(--secondary-amber);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.add-spot-btn:hover {
+  background: #FFF3E0;
+}
+
+/* Map & Search */
+.map-search-bar {
+  display: flex;
+  gap: 8px;
+}
+
+.map-search-bar input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  outline: none;
+}
+
+.map-search-bar button {
+  background: var(--primary-maple);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#map {
+  height: 520px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+/* Discussion Box */
+.discussion-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid var(--border-color);
+}
+
+.discussion-card h2 {
+  font-size: 1.1rem;
+  color: var(--primary-maple);
+  margin-bottom: 10px;
+}
+
+#global-notes {
+  width: 100%;
+  height: 100px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.9rem;
+  outline: none;
+  margin-bottom: 8px;
+}
+
+.save-notes-btn {
+  background: var(--secondary-amber);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+  
+  .map-sticky-wrapper {
+    position: static;
+  }
+
+  #map {
+    height: 350px;
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>東京 2026.11 🍁 5天4夜精簡版行程</title>
+  <!-- Leaflet CSS (免費互動地圖) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Font Awesome 圖示 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 頁首與日期快速導覽 -->
+  <header class="main-header">
+    <div class="header-content">
+      <h1>🍁 東京 2026.11 旅遊行程表</h1>
+      <p class="subtitle">2026/11/10 - 11/14 自由行企劃</p>
+    </div>
+    <nav class="date-nav">
+      <button class="nav-btn active" onclick="scrollToDay('day1')">Day 1 (11/10)</button>
+      <button class="nav-btn" onclick="scrollToDay('day2')">Day 2 (11/11)</button>
+      <button class="nav-btn" onclick="scrollToDay('day3')">Day 3 (11/12)</button>
+      <button class="nav-btn highlight-day" onclick="scrollToDay('day4')">Day 4 (11/13 🎂)</button>
+      <button class="nav-btn" onclick="scrollToDay('day5')">Day 5 (11/14)</button>
+      <button class="nav-btn draft-btn" onclick="scrollToDay('drafts')">📌 備選/待討論</button>
+    </nav>
+  </header>
+
+  <!-- 主內容區域 -->
+  <div class="container">
+    
+    <!-- 左側行程列表 -->
+    <main class="itinerary-section">
+
+      <!-- Day 1 -->
+      <section id="day1" class="day-card">
+        <div class="day-header">
+          <h2>Day 1｜11/10（二）成田會合 ➔ 淺草老街與抹茶巡禮</h2>
+        </div>
+        <div class="spot-list" id="list-day1"></div>
+        <button class="add-spot-btn" onclick="addNewSpotPrompt('day1')"><i class="fa-solid fa-plus"></i> 新增行程地點</button>
+      </section>
+
+      <!-- Day 2 -->
+      <section id="day2" class="day-card">
+        <div class="day-header">
+          <h2>Day 2｜11/11（三）春日部小新巡禮 ➔ 池袋追星購物</h2>
+        </div>
+        <div class="spot-list" id="list-day2"></div>
+        <button class="add-spot-btn" onclick="addNewSpotPrompt('day2')"><i class="fa-solid fa-plus"></i> 新增行程地點</button>
+      </section>
+
+      <!-- Day 3 -->
+      <section id="day3" class="day-card">
+        <div class="day-header">
+          <h2>Day 3｜11/12（四）東京迪士尼海洋全日暢玩</h2>
+        </div>
+        <div class="spot-list" id="list-day3"></div>
+        <button class="add-spot-btn" onclick="addNewSpotPrompt('day3')"><i class="fa-solid fa-plus"></i> 新增行程地點</button>
+      </section>
+
+      <!-- Day 4 -->
+      <section id="day4" class="day-card birthday-card">
+        <div class="day-header">
+          <h2>Day 4｜11/13（五）🎂 生日快樂日！洗錢 ➔ 澀谷 ➔ 六本木燈海</h2>
+        </div>
+        <div class="spot-list" id="list-day4"></div>
+        <button class="add-spot-btn" onclick="addNewSpotPrompt('day4')"><i class="fa-solid fa-plus"></i> 新增行程地點</button>
+      </section>
+
+      <!-- Day 5 -->
+      <section id="day5" class="day-card">
+        <div class="day-header">
+          <h2>Day 5｜11/14（六）最後採買 ➔ 前往機場返程</h2>
+        </div>
+        <div class="spot-list" id="list-day5"></div>
+        <button class="add-spot-btn" onclick="addNewSpotPrompt('day5')"><i class="fa-solid fa-plus"></i> 新增行程地點</button>
+      </section>
+
+      <!-- 備選 / 待討論地點清單 -->
+      <section id="drafts" class="day-card draft-section">
+        <div class="day-header">
+          <h2>📌 備選清單 / 待討論餐廳地點</h2>
+        </div>
+        <div class="spot-list" id="list-drafts"></div>
+        <button class="add-spot-btn" onclick="addNewSpotPrompt('drafts')"><i class="fa-solid fa-plus"></i> 新增備選地點</button>
+      </section>
+
+      <!-- 討論與團隊備註專區 -->
+      <section class="discussion-card">
+        <h2>💬 行程討論與整體備註區</h2>
+        <div class="comment-box">
+          <textarea id="global-notes" placeholder="在這裡留下大家想討論的內容或備忘事項..."></textarea>
+          <button class="save-notes-btn" onclick="saveNotes()"><i class="fa-solid fa-floppy-disk"></i> 儲存筆記</button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右側地圖區域 -->
+    <aside class="map-section">
+      <div class="map-sticky-wrapper">
+        <div class="map-search-bar">
+          <input type="text" id="address-input" placeholder="輸入中文地址或地點（如: 淺草寺）">
+          <button onclick="searchAddress()"><i class="fa-solid fa-magnifying-glass"></i> 搜尋標記</button>
+        </div>
+        <div id="map"></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
